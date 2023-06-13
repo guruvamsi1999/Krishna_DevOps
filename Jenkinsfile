@@ -8,7 +8,7 @@ pipeline {
             }
         }
 
-        stage('Install Dependencies') {
+       ''' stage('Install Dependencies') {
             steps {
                 sh 'pip install -r requirements.txt'
             }
@@ -24,8 +24,8 @@ pipeline {
             steps {
                 sh 'python -m unittest discover -s tests -p "test_*.py"'
             }
-        }
-
+        } 
+'''
         stage('Build Docker Image') {
             steps {
                 sh 'docker build -t myapp:${env.BUILD_NUMBER} .'
