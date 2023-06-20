@@ -1,10 +1,9 @@
 pipeline {
     agent any
-
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/guruvamsi1999/Krishna_DevOps.git'
+                sh "git clone https://github.com/guruvamsi1999/Krishna_DevOps.git"
             }
         }
 
@@ -25,7 +24,7 @@ pipeline {
                 sh 'python -m unittest discover -s tests -p "test_*.py"'
             }
         } 
-'''
+
         stage('Build Docker Image') {
             steps {
                 sh 'docker build -t myapp:${env.BUILD_NUMBER} .'
@@ -46,5 +45,6 @@ pipeline {
                 // Your deployment steps here
             }
         }
+        '''
     }
 }
